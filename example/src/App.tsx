@@ -20,7 +20,7 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import {CredentialExchangeRecord} from '@aries-framework/core';
-import {CredentialView} from '@aries-framework/credential-view';
+import {CredentialView1} from '@aries-framework/credential-view';
 import {
   OCACredentialBundle,
   DefaultOCACredentialBundle,
@@ -76,7 +76,7 @@ const App = () => {
         keyExtractor={credential => credential.id}
         renderItem={({item: credential}) => {
           return (
-            <CredentialView
+            <CredentialView1
               credential={credential}
               width={screenWidth / 2}
               bundle={bundle}
