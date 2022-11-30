@@ -33,14 +33,14 @@ const CredentialView: React.FC<CredentialCardProps> = ({
       ]}>
         <View style={{position:'relative', top: 0, left: (width * 0.2), width: (width * 0.8), backgroundColor:'blue'}}>
           <View style={{marginTop: (width * 0.05), backgroundColor:'cyan', marginRight: (width * 0.05), marginBottom: (width * 0.05)}}>
-            <Text style={styles.fieldLabelText}>{"Government of British Columbia"}</Text>
-            <Text style={styles.fieldValueText}>{"Person"}</Text>
+            <Text style={[styles.fieldLabelText,{paddingRight: (width * 0.1), opacity: 0.8}]}>{"Government of British Columbia Government of British Colu"}</Text>
+            <Text style={[styles.fieldValueText,{paddingRight: (width * 0.1)}]}>{"Person 1 2 3 4 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1"}</Text>
             <View style={{height: fieldSeparatorSpacer}}/>
             <Text style={styles.fieldLabelText}>{"Given Names"}</Text>
             <Text style={styles.fieldValueText}>{"My long name My long name My long name My long name My long name My long name  My long name"}</Text>
             <View style={{height: fieldSeparatorSpacer}}/>
             <Text style={styles.fieldLabelText}>{"Given Names"}</Text>
-            <Text style={styles.fieldValueText}>{"My long name My long name My long name My long name My long name My long name  My long name"}</Text>
+            <Text style={styles.fieldValueText}>{"0 1 2 3 4 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 0 1 2 3 4 5 6 7 8 9"}</Text>
           </View>
         </View>
         <View style={{position:'absolute', top: 0, left: 0, width: (width * 0.10), height: '100%', backgroundColor:'red'}}/>
