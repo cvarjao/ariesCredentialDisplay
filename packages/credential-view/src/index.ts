@@ -1,2 +1,2 @@
-import CredentialView from './CredentialView'
-export {CredentialView}
+import CredentialView from './CredentialView';
+export {CredentialView};

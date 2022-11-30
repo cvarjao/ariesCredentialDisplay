@@ -12,16 +12,25 @@ import React from 'react';
 import {
   FlatList,
   SafeAreaView,
-  ScrollView,
   StatusBar,
   useColorScheme,
-  View,
+  Dimensions,
 } from 'react-native';
 
-import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import {CredentialExchangeRecord} from '@aries-framework/core';
 import {CredentialView} from '@aries-framework/credential-view';
+import {
+  OCACredentialBundle,
+  DefaultOCACredentialBundle,
+  OverlayType,
+} from '@aries-framework/aries-oca-core';
+
+import {
+  AriesCredentialLayoutLayerv1Name,
+  AriesCredentialLayoutLayerv1,
+} from '@aries-framework/aries-oca-layers';
 
 const mockCredential = (seed: any) => {
   return {
@@ -36,6 +45,18 @@ const credentials: CredentialExchangeRecord[] = [
   mockCredential({id: 'BB4567'}),
 ];
 
+const {width: screenWidth} = Dimensions.get('window');
+
+const bundle: OCACredentialBundle = new DefaultOCACredentialBundle({
+  overlays: [
+    {
+      capture_base: '',
+      type: AriesCredentialLayoutLayerv1Name,
+      primary_background_color: '#4DA6FF',
+    } as AriesCredentialLayoutLayerv1,
+  ],
+  capture_base: {capture_base: '', type: OverlayType.BASE_10},
+});
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -54,7 +75,13 @@ const App = () => {
         numColumns={2}
         keyExtractor={credential => credential.id}
         renderItem={({item: credential}) => {
-          return <CredentialView credential={credential} />;
+          return (
+            <CredentialView
+              credential={credential}
+              width={screenWidth / 2}
+              bundle={bundle}
+            />
+          );
         }}
       />
     </SafeAreaView>
