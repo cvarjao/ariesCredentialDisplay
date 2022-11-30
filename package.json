@@ -1,0 +1,9 @@
+{
+  "name": "credential-display-root",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Clécio Varjão <1348549+cvarjao@users.noreply.github.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": ["example", "packages/*"]
+}
