@@ -1,2 +1,3 @@
 import CredentialView1 from './CredentialView1';
-export {CredentialView1, CredentialView1 as CredentialView};
+import CredentialView2 from './CredentialView2';
+export {CredentialView1, CredentialView2, CredentialView2 as CredentialView};

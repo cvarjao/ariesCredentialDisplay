@@ -25,7 +25,7 @@ const CredentialView: React.FC<CredentialCardProps> = ({
   return (
     <View
       style={[
-        {width: width, backgroundColor: layout.primary_background_color},
+        {width: width, backgroundColor: layout?.primary_background_color},
       ]}>
       <View style={{flex: 1, flexDirection: 'row', padding: 10}}>
         <View style={{flex: 4}}>

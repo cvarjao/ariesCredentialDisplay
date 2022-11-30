@@ -15,12 +15,13 @@ import {
   StatusBar,
   useColorScheme,
   Dimensions,
+  View,
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import {CredentialExchangeRecord} from '@aries-framework/core';
-import {CredentialView1} from '@aries-framework/credential-view';
+import {CredentialView1, CredentialView2} from '@aries-framework/credential-view';
 import {
   OCACredentialBundle,
   DefaultOCACredentialBundle,
@@ -57,6 +58,17 @@ const bundle: OCACredentialBundle = new DefaultOCACredentialBundle({
   ],
   capture_base: {capture_base: '', type: OverlayType.BASE_10},
 });
+const ItemDivider = () => {
+  return (
+    <View
+      style={{
+        height: 10,
+        width: '100%',
+        backgroundColor: '#607D8B',
+      }}
+    />
+  );
+}
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -72,13 +84,14 @@ const App = () => {
       />
       <FlatList
         data={credentials}
-        numColumns={2}
+        numColumns={1}
         keyExtractor={credential => credential.id}
+        ItemSeparatorComponent={ItemDivider}
         renderItem={({item: credential}) => {
           return (
-            <CredentialView1
+            <CredentialView2
               credential={credential}
-              width={screenWidth / 2}
+              width={screenWidth}
               bundle={bundle}
             />
           );
