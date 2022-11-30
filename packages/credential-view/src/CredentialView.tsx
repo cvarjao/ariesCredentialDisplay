@@ -1,4 +1,4 @@
-import React, {PropsWithChildren} from 'react';
+import React from 'react';
 import {useColorScheme, StyleSheet, Text, View} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {CredentialExchangeRecord} from '@aries-framework/core';
@@ -6,7 +6,7 @@ import {CredentialExchangeRecord} from '@aries-framework/core';
 interface CredentialCardProps {
   credential: CredentialExchangeRecord;
 }
-const Section: React.FC<CredentialCardProps> = ({credential}) => {
+const CredentialView: React.FC<CredentialCardProps> = ({credential}) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -51,4 +51,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Section;
+export default CredentialView;

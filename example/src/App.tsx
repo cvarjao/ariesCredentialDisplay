@@ -21,7 +21,7 @@ import {
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 
 import {CredentialExchangeRecord} from '@aries-framework/core';
-import CredentialView from './lib/components/CredentialView';
+import {CredentialView} from '@aries-framework/credential-view';
 
 const mockCredential = (seed: any) => {
   return {
