@@ -1,12 +1,12 @@
 import React, {PropsWithChildren} from 'react';
 import {useColorScheme, StyleSheet, Text, View} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {CredentialExchangeRecord} from '@aries-framework/core';
 
-const Section: React.FC<
-  PropsWithChildren<{
-    title: string;
-  }>
-> = ({children, title}) => {
+interface CredentialCardProps {
+  credential: CredentialExchangeRecord;
+}
+const Section: React.FC<CredentialCardProps> = ({credential}) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -17,7 +17,7 @@ const Section: React.FC<
             color: isDarkMode ? Colors.white : Colors.black,
           },
         ]}>
-        {title}
+        {credential.id}
       </Text>
       <Text
         style={[
@@ -26,7 +26,7 @@ const Section: React.FC<
             color: isDarkMode ? Colors.light : Colors.dark,
           },
         ]}>
-        {children}
+        {credential.createdAt.toLocaleString()}
       </Text>
     </View>
   );

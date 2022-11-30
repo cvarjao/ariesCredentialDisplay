@@ -41,5 +41,8 @@
       "json",
       "node"
     ]
+  },
+  "peerDependencies": {
+    "@aries-framework/core": "^0.2.2"
   }
 }
