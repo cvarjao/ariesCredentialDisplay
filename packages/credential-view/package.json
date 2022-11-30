@@ -2,5 +2,8 @@
   "name": "@aries-framework/credential-view",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "react-native-builder-bob": "^0.20.1"
+  }
 }
