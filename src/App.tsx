@@ -23,15 +23,17 @@ import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 import {CredentialExchangeRecord} from '@aries-framework/core';
 import CredentialView from './lib/components/CredentialView';
 
+const mockCredential = (seed: any) => {
+  return {
+    ...seed,
+    createdAt: new Date(),
+  } as unknown as CredentialExchangeRecord;
+};
 const credentials: CredentialExchangeRecord[] = [
-  {
-    id: '123',
-    createdAt: new Date(),
-  } as unknown as CredentialExchangeRecord,
-  {
-    id: '456',
-    createdAt: new Date(),
-  } as unknown as CredentialExchangeRecord,
+  mockCredential({id: 'AA1234'}),
+  mockCredential({id: 'AB4567'}),
+  mockCredential({id: 'BA1234'}),
+  mockCredential({id: 'BB4567'}),
 ];
 
 const App = () => {
@@ -49,6 +51,7 @@ const App = () => {
       />
       <FlatList
         data={credentials}
+        numColumns={2}
         keyExtractor={credential => credential.id}
         renderItem={({item: credential}) => {
           return <CredentialView credential={credential} />;
