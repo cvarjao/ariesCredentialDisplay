@@ -54,6 +54,8 @@ const bundle: OCACredentialBundle = new DefaultOCACredentialBundle({
       capture_base: '',
       type: AriesCredentialLayoutLayerv1Name,
       primary_background_color: '#4DA6FF',
+      logo: require('./assets/react-native-logo.png'),
+      background_image_slice: require('./assets/cred-slice.png'),
     } as AriesCredentialLayoutLayerv1,
   ],
   capture_base: {capture_base: '', type: OverlayType.BASE_10},

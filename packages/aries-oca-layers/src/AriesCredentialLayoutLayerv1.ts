@@ -1,6 +1,6 @@
 import {BaseOverlay} from '@aries-framework/aries-oca-core';
 
-export type Uri = string;
+export type Uri = string | NodeRequire;
 export type RgbColor = string;
 
 export interface OverlayHeader {
@@ -18,7 +18,7 @@ export interface OverlayFooter {
 export const AriesCredentialLayoutLayerv1Name = 'spec/overlays/card_layout/1.0';
 export interface AriesCredentialLayoutLayerv1 extends BaseOverlay {
   logo?: Uri;
-  background_image?: Uri;
+  background_image_slice?: Uri;
   primary_background_color?: RgbColor;
   secondary_background_color?: RgbColor;
   primary_attribute?: string;

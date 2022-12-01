@@ -10,6 +10,7 @@
   "react-native": "src/index.ts",
   "module": "./dist/module/index.js",
   "types": "./dist/typescript/index.d.ts",
+  "source": "src/index",
   "scripts": {
     "prepare": "bob build"
   },
@@ -24,7 +25,7 @@
     "source": "src",
     "output": "dist",
     "targets": [
-      "module",
+      ["module", {"configFile": "./babel.config.js"}],
       "typescript"
     ]
   },

@@ -1,5 +1,5 @@
 import React from 'react';
-import {useColorScheme, StyleSheet, Text, View} from 'react-native';
+import {useColorScheme, StyleSheet, Text, View, Image} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {CredentialExchangeRecord} from '@aries-framework/core';
 import {OCACredentialBundle} from '@aries-framework/aries-oca-core';
@@ -37,15 +37,14 @@ const CredentialView: React.FC<CredentialCardProps> = ({
             <Text style={[styles.fieldValueText,{paddingRight: (width * 0.1)}]}>{"Person 1 2 3 4 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1"}</Text>
             <View style={{height: fieldSeparatorSpacer}}/>
             <Text style={styles.fieldLabelText}>{"Given Names"}</Text>
-            <Text style={styles.fieldValueText}>{"My long name My long name My long name My long name My long name My long name  My long name"}</Text>
+            <Text style={styles.fieldValueText}>{"My long name My long"}</Text>
             <View style={{height: fieldSeparatorSpacer}}/>
-            <Text style={styles.fieldLabelText}>{"Given Names"}</Text>
-            <Text style={styles.fieldValueText}>{"0 1 2 3 4 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 0 1 2 3 4 5 6 7 8 9"}</Text>
+            
           </View>
         </View>
-        <View style={{position:'absolute', top: 0, left: 0, width: (width * 0.10), height: '100%', backgroundColor:'red'}}/>
+        <Image source={layout?.background_image_slice} resizeMethod={"scale"} style={{resizeMode: 'repeat', position:'absolute', top: 0, left: 0, width: (width * 0.10), backgroundColor:'red'}}/>
         <View style={{position:'absolute', top: 0, right: 0, width: (width * 0.10), height: (width * 0.10), backgroundColor:'green'}}/>
-        <View style={{position:'absolute', top: padding, left: (width * 0.05), width: (width * 0.10), height: (width * 0.10), backgroundColor:'yellow'}}/>
+        <Image source={layout?.logo} resizeMethod={"scale"} style={{position:'absolute', resizeMode:'center', top: padding, left: (width * 0.05), width: (width * 0.10), height: (width * 0.10)}}/>
     </View>
   );
 };
