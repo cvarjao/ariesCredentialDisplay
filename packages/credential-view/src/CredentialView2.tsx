@@ -30,7 +30,7 @@ const CredentialView: React.FC<CredentialCardProps> = ({
   const layout = bundle?.getOverlay<AriesCredentialLayoutLayerv1>(
     AriesCredentialLayoutLayerv1Name,
   );
-  const borderRadius = Math.max(20, width * 0.02);
+  const borderRadius = 10;
   const padding = Math.max(0, width * 0.05);
   const fieldSeparatorSpacer = 16;
   const margin = width * .05
@@ -87,6 +87,7 @@ const CredentialView: React.FC<CredentialCardProps> = ({
           minHeight: width * 0.3,
           backgroundColor: layout?.primary_background_color,
           borderRadius: borderRadius,
+          overflow: 'hidden',
         },
       ]}>
       <View
@@ -134,6 +135,8 @@ const CredentialView: React.FC<CredentialCardProps> = ({
           width: statusBoxSize,
           height: statusBoxSize,
           backgroundColor: 'green',
+          borderTopRightRadius: borderRadius,
+          borderBottomLeftRadius: borderRadius,
         }}
       />
       <Image
