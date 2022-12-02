@@ -20,12 +20,15 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import {CredentialExchangeRecord} from '@aries-framework/core';
+import {CredentialExchangeRecord, CredentialMetadataKeys} from '@aries-framework/core';
 import {CredentialView2} from '@aries-framework/credential-view';
 import {
   OCACredentialBundle,
   DefaultOCACredentialBundle,
   OverlayType,
+  DefaultOCABundleResolver,
+  Bundles,
+  Bundle,
 } from '@aries-framework/aries-oca-core';
 
 import {
@@ -34,11 +37,17 @@ import {
 } from '@aries-framework/aries-oca-layers';
 
 const mockCredential = (seed: any) => {
-  return {
+  const cred = new CredentialExchangeRecord({
     ...seed,
     createdAt: new Date(),
-  } as unknown as CredentialExchangeRecord;
+  });
+  cred.metadata.set(CredentialMetadataKeys.IndyCredential, {
+    schemaId: 'ABC',
+    credentialDefinitionId: 'ABC1',
+  });
+  return cred;
 };
+
 const credentials: CredentialExchangeRecord[] = [
   mockCredential({id: 'AA1234'}),
   mockCredential({id: 'AB4567'}),
@@ -48,7 +57,7 @@ const credentials: CredentialExchangeRecord[] = [
 
 const {width: screenWidth} = Dimensions.get('window');
 
-const bundle: OCACredentialBundle = new DefaultOCACredentialBundle({
+const bundle: Bundle = {
   overlays: [
     {
       capture_base: '',
@@ -59,7 +68,23 @@ const bundle: OCACredentialBundle = new DefaultOCACredentialBundle({
     } as AriesCredentialLayoutLayerv1,
   ],
   capture_base: {capture_base: '', type: OverlayType.BASE_10},
-});
+};
+const bundles: Bundles = {ABC: bundle};
+
+class MyCABundleResolver extends DefaultOCABundleResolver {
+  public async resolveWithDefaultBundle(
+    _credential: CredentialExchangeRecord,
+  ): Promise<OCACredentialBundle> {
+    const bundle1 = await this.resolve(_credential);
+    if (bundle1 === undefined) {
+      throw new Error('Ooooopppps!');
+    }
+    return bundle1;
+  }
+}
+
+const resolver = new MyCABundleResolver().loadBundles(bundles);
+
 const ItemDivider = () => {
   return (
     <View
@@ -94,7 +119,7 @@ const App = () => {
             <CredentialView2
               credential={credential}
               width={screenWidth}
-              bundle={bundle}
+              resolver={resolver}
             />
           );
         }}

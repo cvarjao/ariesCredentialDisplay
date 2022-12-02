@@ -58,7 +58,9 @@
       "react-native/**",
       "react-native-dev-menu",
       "react-native-svg",
-      "jetifier"
+      "jetifier",
+      "**/react",
+      "**/react/**"
     ]
   }
 }

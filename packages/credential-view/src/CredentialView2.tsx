@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {StyleSheet, Text, View, Image, ImageSourcePropType} from 'react-native';
 import {CredentialExchangeRecord} from '@aries-framework/core';
-import {OCACredentialBundle} from '@aries-framework/aries-oca-core';
+import {OCACredentialBundle, OCABundleResolver} from '@aries-framework/aries-oca-core';
 import {
   AriesCredentialLayoutLayerv1Name,
   AriesCredentialLayoutLayerv1,
@@ -10,7 +10,7 @@ import {
 interface CredentialCardProps {
   credential: CredentialExchangeRecord;
   width: number;
-  bundle: OCACredentialBundle;
+  resolver: OCABundleResolver;
 }
 
 const toImageSource = (source: unknown): ImageSourcePropType => {
@@ -23,15 +23,23 @@ const toImageSource = (source: unknown): ImageSourcePropType => {
 const CredentialView: React.FC<CredentialCardProps> = ({
   credential,
   width,
-  bundle,
+  resolver,
 }) => {
-  const layout = bundle.getOverlay<AriesCredentialLayoutLayerv1>(
+  const [bundle, setBundle] = useState<OCACredentialBundle | undefined>(undefined)
+  const layout = bundle?.getOverlay<AriesCredentialLayoutLayerv1>(
     AriesCredentialLayoutLayerv1Name,
   );
   const borderRadius = Math.max(20, width * 0.02);
   const padding = Math.max(0, width * 0.05);
   const fieldSeparatorSpacer = 16;
-
+  useEffect(() => {
+    if (!credential) {
+      return
+    }
+    resolver.resolveWithDefaultBundle(credential).then(async (_bundle) => {
+      setBundle(_bundle)
+    })
+  }, [credential, resolver])
   return (
     <View
       style={[

@@ -109,6 +109,9 @@ export interface OCABundleResolver {
   resolve(
     credential: CredentialExchangeRecord,
   ): Promise<OCACredentialBundle | undefined>;
+  resolveWithDefaultBundle(
+    credential: CredentialExchangeRecord,
+  ): Promise<OCACredentialBundle>;
   resolveDefaultBundle(
     credential: CredentialExchangeRecord,
   ): Promise<OCACredentialBundle | undefined>;
@@ -165,6 +168,11 @@ export class DefaultOCACredentialBundle implements OCACredentialBundle {
 
 export class DefaultOCABundleResolver implements OCABundleResolver {
   private bundles: Bundles = {};
+  public resolveWithDefaultBundle(
+    _credential: CredentialExchangeRecord,
+  ): Promise<OCACredentialBundle> {
+    throw new Error('Method not implemented.');
+  }
   public resolve(
     credential: CredentialExchangeRecord,
   ): Promise<OCACredentialBundle | undefined> {
