@@ -41,7 +41,10 @@ function getConfig(appDir, options = {}) {
   return {
     watchFolders,
     resolver: {
-      blockList: exclusionList([]),
+      blockList: exclusionList([
+        /^((?!example).)+[\/\\]node_modules[/\\]react-native[/\\].*/,
+        /^((?!example).)+[\/\\]node_modules[/\\]react[/\\].*/,
+      ]),
       extraNodeModules: extraNodeModules,
     },
   };
