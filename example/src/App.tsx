@@ -20,7 +20,10 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import {CredentialExchangeRecord, CredentialMetadataKeys} from '@aries-framework/core';
+import {
+  CredentialExchangeRecord,
+  CredentialMetadataKeys,
+} from '@aries-framework/core';
 import {CredentialView2} from '@aries-framework/credential-view';
 import {
   OCACredentialBundle,

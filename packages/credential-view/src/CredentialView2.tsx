@@ -26,12 +26,51 @@ const CredentialView: React.FC<CredentialCardProps> = ({
   resolver,
 }) => {
   const [bundle, setBundle] = useState<OCACredentialBundle | undefined>(undefined)
+  const meta = bundle?.getMetaOverlay('en');
   const layout = bundle?.getOverlay<AriesCredentialLayoutLayerv1>(
     AriesCredentialLayoutLayerv1Name,
   );
   const borderRadius = Math.max(20, width * 0.02);
   const padding = Math.max(0, width * 0.05);
   const fieldSeparatorSpacer = 16;
+  const margin = width * .05
+  const logoBoxSize =  width * 0.12
+  const statusBoxSize =  width * 0.12
+  
+  const styles = StyleSheet.create({
+    fieldFirstLabelText: {
+      marginRight: (statusBoxSize / 2) + margin,
+      opacity: 0.8,
+      marginTop: 0
+    },
+    fieldLabelText: {
+      fontFamily: 'sans-serif',
+      fontWeight: 'bold',
+      fontSize: 14,
+      backgroundColor: 'purple',
+      marginTop: margin
+    },
+    fieldValueText: {
+      fontFamily: 'sans-serif',
+      fontWeight: 'bold',
+      fontSize: 18,
+      flexWrap: 'wrap',
+      backgroundColor: 'purple'
+    },
+    sectionContainer: {
+      marginTop: 32,
+      paddingHorizontal: 24,
+    },
+    sectionTitle: {
+      fontSize: 24,
+      fontWeight: '600',
+    },
+    sectionDescription: {
+      marginTop: 8,
+      fontSize: 18,
+      fontWeight: '400',
+    },
+  });
   useEffect(() => {
     if (!credential) {
       return
@@ -56,29 +95,23 @@ const CredentialView: React.FC<CredentialCardProps> = ({
           top: 0,
           left: width * 0.2,
           width: width * 0.8,
-          backgroundColor: 'blue',
         }}>
         <View
           style={{
             marginTop: width * 0.05,
-            backgroundColor: 'cyan',
+            backgroundColor: '#4DA6FF',
             marginRight: width * 0.05,
             marginBottom: width * 0.05,
           }}>
           <Text
-            style={[
-              styles.fieldLabelText,
-              {paddingRight: width * 0.1, opacity: 0.8},
-            ]}>
-            {'Government of British Columbia'}
+            style={[styles.fieldLabelText, styles.fieldFirstLabelText]}>
+            {'Government of British Columbia 1 2 3 4'}
           </Text>
-          <Text style={[styles.fieldValueText, {paddingRight: width * 0.1}]}>
-            {'Person 1 2 3 4 4 5 6 7 8 9 0 1 2'}
+          <Text style={[styles.fieldValueText, {marginRight: (statusBoxSize / 2) + margin}]}>
+            {'Person 1 2 3 4 4 5 6 7 8 9 0 1'}
           </Text>
-          <View style={{height: fieldSeparatorSpacer}} />
           <Text style={styles.fieldLabelText}>{'Given Names'}</Text>
           <Text style={styles.fieldValueText}>{credential.id}</Text>
-          <View style={{height: fieldSeparatorSpacer}} />
         </View>
       </View>
       <Image
@@ -89,7 +122,7 @@ const CredentialView: React.FC<CredentialCardProps> = ({
           position: 'absolute',
           top: 0,
           left: 0,
-          width: width * 0.1,
+          width: width * 0.12,
           backgroundColor: 'red',
         }}
       />
@@ -98,8 +131,8 @@ const CredentialView: React.FC<CredentialCardProps> = ({
           position: 'absolute',
           top: 0,
           right: 0,
-          width: width * 0.1,
-          height: width * 0.1,
+          width: statusBoxSize,
+          height: statusBoxSize,
           backgroundColor: 'green',
         }}
       />
@@ -109,44 +142,14 @@ const CredentialView: React.FC<CredentialCardProps> = ({
         style={{
           position: 'absolute',
           resizeMode: 'center',
-          top: padding,
-          left: width * 0.05,
-          width: width * 0.1,
-          height: width * 0.1,
+          top: margin,
+          left: margin,
+          width: logoBoxSize,
+          height: logoBoxSize,
         }}
       />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  fieldLabelText: {
-    fontFamily: 'sans-serif',
-    fontWeight: 'bold',
-    fontSize: 14,
-  },
-  fieldValueText: {
-    fontFamily: 'sans-serif',
-    fontWeight: 'bold',
-    fontSize: 18,
-    flexWrap: 'wrap',
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default CredentialView;

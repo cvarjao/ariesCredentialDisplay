@@ -10,7 +10,8 @@
   },
   "react-native": "src/index.ts",
   "module": "./dist/module/index.js",
-  "types": "./dist/typescript/index.d.ts",
+  "types": "dist/typescript/index.d.ts",
+  "typings": "dist/typescript/index.d.ts",
   "scripts": {
     "prepare": "bob build"
   },

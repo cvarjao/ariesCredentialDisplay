@@ -1,4 +1,4 @@
-import {BaseOverlay} from '@aries-framework/aries-oca-core';
+import type {BaseOverlay} from '@aries-framework/aries-oca-core';
 
 export type Uri = string | NodeRequire;
 export type RgbColor = string;

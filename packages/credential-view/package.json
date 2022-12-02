@@ -1,10 +1,14 @@
 {
   "name": "@aries-framework/credential-view",
   "version": "1.0.0",
-  "private":"true",
+  "private": "true",
   "main": "dist/module/index.js",
   "license": "MIT",
   "devDependencies": {
+    "@types/react": "^18.0.21",
+    "@types/react-native": "^0.70.6",
+    "aries-oca-core": "link:../aries-oca-core",
+    "react": "18.1.0",
     "react-native-builder-bob": "^0.20.1",
     "typescript": "^4.8.3"
   },
@@ -40,9 +44,9 @@
     "dist/"
   ],
   "peerDependencies": {
+    "@aries-framework/aries-oca-core": "1.0.0",
     "@aries-framework/core": "^0.2.2",
     "react": "18.1.0",
-    "react-native": "0.70.6",
-    "@aries-framework/aries-oca-core": "1.0.0"
+    "react-native": "0.70.6"
   }
 }
