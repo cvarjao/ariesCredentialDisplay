@@ -1,6 +1,7 @@
 {
   "name": "@aries-framework/credential-view",
   "version": "1.0.0",
+  "private":"true",
   "main": "dist/module/index.js",
   "license": "MIT",
   "devDependencies": {
@@ -25,12 +26,23 @@
     "source": "src",
     "output": "dist",
     "targets": [
-      ["module", {"configFile": "./babel.config.js"}],
+      [
+        "module",
+        {
+          "configFile": "./babel.config.js"
+        }
+      ],
       "typescript"
     ]
   },
   "eslintIgnore": [
     "node_modules/",
     "dist/"
-  ]
+  ],
+  "peerDependencies": {
+    "@aries-framework/core": "^0.2.2",
+    "react": "18.1.0",
+    "react-native": "0.70.6",
+    "@aries-framework/aries-oca-core": "1.0.0"
+  }
 }

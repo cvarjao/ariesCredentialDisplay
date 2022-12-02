@@ -1,6 +1,7 @@
 {
   "name": "@aries-framework/aries-oca-core",
   "version": "1.0.0",
+  "private":"true",
   "main": "dist/module/index.js",
   "license": "MIT",
   "devDependencies": {
