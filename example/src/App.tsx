@@ -92,7 +92,7 @@ const ItemDivider = () => {
   return (
     <View
       style={{
-        height: 10,
+        height: screenWidth * 0.05,
         width: '100%',
         backgroundColor: '#607D8B',
       }}

@@ -94,8 +94,8 @@ const CredentialView: React.FC<CredentialCardProps> = ({
         style={{
           position: 'relative',
           top: 0,
-          left: width * 0.2,
-          width: width * 0.8,
+          left: width * 0.22,
+          width: width * 0.78,
         }}>
         <View
           style={{
@@ -106,7 +106,7 @@ const CredentialView: React.FC<CredentialCardProps> = ({
           }}>
           <Text
             style={[styles.fieldLabelText, styles.fieldFirstLabelText]}>
-            {'Government of British Columbia 1 2 3 4'}
+            {'Government of British Columbia 1 2 3'}
           </Text>
           <Text style={[styles.fieldValueText, {marginRight: (statusBoxSize / 2) + margin}]}>
             {'Person 1 2 3 4 4 5 6 7 8 9 0 1'}
